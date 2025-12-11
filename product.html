@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f7f2ec;
+      color: #2f241f;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 32px 16px;
+    }
+    .card {
+      background: #fff;
+      padding: 28px;
+      border-radius: 18px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+      width: min(960px, 96vw);
+      display: grid;
+      grid-template-columns: minmax(320px, 1fr) minmax(320px, 1fr);
+      gap: 28px;
+      align-items: center;
+    }
+    .item-visual {
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #f0e7de;
+      background: #f7f2ec;
+      min-height: 280px;
+      display: grid;
+      place-items: center;
+    }
+    .item-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .info {
+      display: grid;
+      gap: 12px;
+    }
+    .item-name {
+      font-size: clamp(1.6rem, 2vw + 1rem, 2.1rem);
+      margin: 0;
+    }
+    .note {
+      margin: 0;
+      color: #54433c;
+    }
+    .actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .actions button {
+      padding: 14px 12px;
+      border-radius: 12px;
+      border: 1px solid #e6ddd3;
+      background: #f7f2ec;
+      color: #2f241f;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 120ms ease, box-shadow 120ms ease;
+    }
+    .actions button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+    .back-link {
+      justify-self: start;
+      margin-top: 4px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #2f7a6d;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    @media (max-width: 780px) {
+      .card {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="card" aria-live="polite">
+    <div class="item-visual">
+      <img id="itemImage" src="" alt="Selected item">
+    </div>
+    <div class="info">
+      <h1 class="item-name" id="itemName">Loading item…</h1>
+      <p class="note">Click what you want.</p>
+      <div class="actions" aria-label="Actions">
+        <button type="button">Add to cart</button>
+        <button type="button">Order now</button>
+        <button type="button">View ingredients</button>
+        <button type="button">Nutrition facts</button>
+        <button type="button">Allergens</button>
+        <button type="button">Share</button>
+      </div>
+      <a class="back-link" href="index.html">← Back to store</a>
+    </div>
+  </main>
+
+  <a class="cart-fab" id="cartFabProduct" href="index.html?openCart=1" aria-label="Open cart">
+    <span class="fab-icon">🛒</span>
+    <span class="fab-count" id="cartFabCountProduct">0</span>
+  </a>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const rawItem = params.get('item') || 'Unknown item';
+      const explicitImg = params.get('img');
+      const decoded = decodeURIComponent(rawItem);
+      const normalized = decoded.trim().toLowerCase();
+      const itemNameEl = document.getElementById('itemName');
+      const itemImageEl = document.getElementById('itemImage');
+      const actionButtons = document.querySelectorAll('.actions button');
+
+      const imageMap = {
+        'shawarma feast': 'menu/shawarma.jpg',
+        'pizza feast': 'menu/pizza.jpg',
+        'sandwich feast': 'menu/sandwich.jpg',
+        'burger feast': 'menu/burgers.jpg',
+        'pie feast': 'menu/pie.jpg',
+        'french fries': 'menu/fries.jpg',
+        'iced coffee': 'menu/coffee.jpg',
+        'bubble tea': 'menu/bubbleTea.jpg',
+        'milkshake drinks': 'menu/milkshake.jpg',
+        'milkshake': 'menu/milkshake.jpg',
+        'graham bar': 'menu/graham.jpg',
+      };
+
+      const defaultActions = [
+        'Add to cart',
+        'Order now',
+        'View ingredients',
+        'Nutrition facts',
+        'Allergens',
+        'Share',
+      ];
+
+      const actionMap = {
+        'shawarma feast': ['Shawarma Wrap', 'shawarma Burger', 'shawarma Rice', 'shawarma Fries', 'shawarma Nachos', 'shawarma Sandwich'],
+        'pizza feast': ['Ham & Crab Stick ₱150', 'Hawaiian ₱140', 'Pork Deluxe ₱150', 'Double Pepporoni ₱160', 'Bacon & Sausage ₱150', 'Tom Yum Goong ₱170'],
+        'sandwich feast': ['Egg Sandwich ₱35', 'Chicken sandwich ₱40', 'Cheese Sandwich ₱55', 'Bacon Sandwich ₱55', 'Ham and Cheese ₱50', 'Plain ₱35'],
+        'burger feast': ['Plain ₱35', 'Cheese Burger ₱42', 'Double Cheese ₱55', 'Cheese & Egg ₱65', 'With Egg₱42', 'Comming Soon'],
+        'pie feast': ['Mango Pie', 'Apple Pie', 'Buko Pie', 'Pumpkin Pie', 'Comming Soon', 'Comming Soon'],
+        'french fries': ['Small fries ₱25', 'Medium fries ₱35', 'Large fries ₱45 ', 'Comming Soon', 'Comming Soon', 'Comming Soon'],
+        'iced coffee': ['Spanish Latte', 'Pinoy Coco Espreso', 'Iced Latte', 'Iced Americano', 'Iced MAchiato', 'Iced Mocha Latte'],
+        'bubble tea': ['Strawberry', 'Passion Fruit', 'Lychee', 'Almond', 'Mango', 'Taro'],
+        'milkshake': ['Chocolate Milkshake', 'Vanilla Milkshake', 'Strawberry Milkshake', 'Banana Milkshake', 'Oreo Milkshake', 'Caramel Milkshake'],
+        'graham bar': ['Plain ₱30', 'Mango ₱35', 'Cookies and Cream ₱35', 'Strawberry ₱35', 'Ube ₱35', 'Chocolate ₱35'],
+      };
+
+      if (itemNameEl) {
+        itemNameEl.textContent = decoded;
+      }
+
+      if (itemImageEl) {
+        const src = explicitImg || imageMap[normalized] || 'https://via.placeholder.com/600x400?text=No+image';
+        itemImageEl.src = src;
+        itemImageEl.alt = decoded;
+      }
+
+      function extractPrice(text, fallback) {
+        const match = String(text).match(/(\d+(?:\.\d+)?)/);
+        if (!match) return fallback;
+        const num = parseFloat(match[1]);
+        return Number.isNaN(num) ? fallback : num;
+      }
+
+      if (actionButtons.length) {
+        const actions = actionMap[normalized] || defaultActions;
+        const basePrice = params.get('price') ? parseFloat(params.get('price')) : NaN;
+        actionButtons.forEach((btn, idx) => {
+          const label = actions[idx] || defaultActions[idx % defaultActions.length];
+          btn.textContent = label;
+          btn.addEventListener('click', () => {
+            const priceForButton = extractPrice(label, basePrice);
+            addToStoredCart(label, priceForButton);
+            alert(`${label} added to cart`);
+          });
+        });
+      }
+
+      // floating cart icon (match index)
+      const fab = document.getElementById('cartFabProduct');
+      const fabCount = document.getElementById('cartFabCountProduct');
+
+      function syncFabCount() {
+        if (!fabCount) return;
+        try {
+          const raw = localStorage.getItem('cartItems');
+          const list = raw ? JSON.parse(raw) : [];
+          if (Array.isArray(list)) {
+            const totalQty = list.reduce((sum, it) => sum + (Number(it.qty) || 0), 0);
+            fabCount.textContent = totalQty;
+          }
+        } catch (err) {
+          console.error('Failed to read cart for fab count', err);
+        }
+      }
+
+      if (fab) {
+        syncFabCount();
+      }
+    })();
+  </script>
+</body>
+</html>
+

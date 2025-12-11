@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Swirlzy Bakery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lilita+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="checkout.js"></script>
+</head>
+<body>
+  <div class="checkout-page">
+    <header class="checkout-header">
+      <a href="index.html" class="checkout-back">← Back</a>
+      <h1 class="checkout-title">Checkout</h1>
+    </header>
+
+    <div class="checkout-container">
+      <div class="checkout-main">
+        <section class="checkout-section">
+          <h2 class="section-title">Order Summary</h2>
+          <div id="orderItems" class="order-items">
+            <!-- Items will be populated by JavaScript -->
+          </div>
+          <div class="order-totals">
+            <div class="total-row">
+              <span>Subtotal</span>
+              <span id="subtotal">₱0</span>
+            </div>
+            <div class="total-row">
+              <span>Delivery fee</span>
+              <span id="deliveryFee">₱50</span>
+            </div>
+            <div class="total-row total-final">
+              <span>Total</span>
+              <span id="total">₱0</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="checkout-section">
+          <h2 class="section-title">Delivery Information</h2>
+          <form id="deliveryForm" class="delivery-form">
+            <div class="form-group">
+              <label for="customerName">Name</label>
+              <input type="text" id="customerName" name="name" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label for="customerPhone">Phone</label>
+              <input type="tel" id="customerPhone" name="phone" placeholder="+63 912 345 6789" required>
+            </div>
+            <div class="form-group">
+              <label for="customerAddress">Address</label>
+              <input type="text" id="customerAddress" name="address" placeholder="123 Main Street, City, Country" required>
+            </div>
+          </form>
+        </section>
+
+        <section class="checkout-section">
+          <h2 class="section-title">Payment Method</h2>
+          <div class="payment-options">
+            <label class="payment-option">
+              <input type="radio" name="payment" value="cash" checked>
+              <span class="payment-label">
+                <span class="payment-name">Cash on delivery</span>
+              </span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="card">
+              <span class="payment-label">
+                <span class="payment-name">Credit/Debit card</span>
+              </span>
+            </label>
+          </div>
+        </section>
+
+        <button id="placeOrderBtn" class="place-order-btn" type="button">Place Order</button>
+      </div>
+    </div>
+  </div>
+
+  <a class="cart-fab" href="index.html#cart" aria-label="Open cart">
+    <span class="fab-icon">🛒</span>
+  </a>
+</body>
+</html>
+

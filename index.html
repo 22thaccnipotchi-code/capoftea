@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swirlzy Bakery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lilita+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo-mark">
+          <span class="swirl s1"></span>
+          <span class="swirl s2"></span>
+          <span class="swirl s3"></span>
+        </div>
+        <span class="brand-name">SWIRLZY</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#store">Store</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    <!--
+      <button class="cart-btn" id="cartBtn" type="button">
+        <span class="cart-icon-wrap">
+          <span class="cart-icon" aria-hidden="true">🛒</span>
+          <span class="cart-count" id="cartCount">0</span>
+        </span>
+        <span class="cart-label">Cart</span>
+      </button>
+      -->
+    <button class="cart-fab" id="cartFab" type="button" aria-label="Open cart">
+      <span class="fab-icon">🛒</span>
+      <span class="fab-count" id="cartFabCount">0</span>
+    </button>
+    
+  </header>
+
+
+    <main class="content">
+        <div id="life-news" class="cardhero">
+          <div class="hero-title">
+            <span>SWEEE</span>
+            <span>EEET!</span>
+          </div>
+          <div class="cookie-stack">
+            <img class="cookie cookie-back" src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=600&q=80" alt="Cookie">
+            <img class="cookie cookie-front" src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=650&q=80" alt="Cookie">
+            <div class="price-badge">
+              <span class="badge-label">From</span>
+              <span class="badge-price">₱50</span>
+            </div>
+          </div>
+          <div class="hero-footer">
+            <div class="tagline">
+              Freshly crafted treats,<br>made just for you
+            </div>
+            <div class="rating">
+              <div class="rating-score">4.8</div>
+              <div class="rating-meta">since 1985</div>
+            </div>
+            <div class="mini-icons">
+              <img class="mini mini-1" src="menu/milkshake.jpg" alt="Cookie">
+              <img class="mini mini-2" src="menu/coffee.jpg" alt="Cookie">
+              <img class="mini mini-3" src="menu/bubbleTea.jpg" alt="Cookie">
+            </div>
+          </div>
+        </div>
+
+        <div class="cardpicks">
+          <div class="picks-header">
+            <div class="picks-title">Top-3 Picks</div>
+            <div class="picks-subtitle">Freshly crafted, made just for you</div>
+          </div>
+          <div class="picks-list">
+            <div class="pick">
+              <img class="mini mini-1" src="menu/shawarma.jpg" alt="Shawarma">
+              <div class="pick-info">
+                <div class="pick-name">Shawarma Feast</div>
+                <div class="pick-desc">Shawarma Wrap</div>
+              </div>
+              <div class="pick-meta">
+                <div class="pick-price">₱99</div>
+                <div class="pick-each">each</div>
+              </div>
+              <button class="add-btn">+</button>
+            </div>
+            <div class="pick">
+              <img class="mini mini-2" src="menu/milkshake.jpg" alt="Cookie">
+              <div class="pick-info">
+                <div class="pick-name">Milkshake</div>
+                <div class="pick-desc">Banana SHAKE</div>
+              </div>
+              <div class="pick-meta">
+                <div class="pick-price">₱50</div>
+                <div class="pick-each">each</div>
+              </div>
+              <button class="add-btn">+</button>
+            </div>
+            <div class="pick">
+              <img class="mini mini-3" src="menu/fries.jpg" alt="Fries">
+              <div class="pick-info">
+                <div class="pick-name">French Fries</div>
+                <div class="pick-desc">Medium Fries</div>
+              </div>
+              <div class="pick-meta">
+                <div class="pick-price">₱60</div>
+                <div class="pick-each">each</div>
+              </div>
+              <button class="add-btn">+</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section class="store" id="store" aria-label="Store items">
+      <div class="store-header">
+        <p class="services-kicker">Store</p>
+        <h2 class="services-title">Fresh delights ready to satisfy your cravings</h2>
+        <p class="services-subtitle">Handcrafted pastries made with love from warm breads and flaky croissants to decadent cakes and sweet treats baked daily for your enjoyment..</p>
+      </div>
+      <div class="store-grid">
+        <article class="store-card" style="background-image: url('menu/shawarma.jpg');" data-link="product.html?item=Shawarma%20Feast" data-image="menu/shawarma.jpg" data-price="99">
+          <div class="store-top">
+            <div class="store-name">Shawarma Feast</div>
+            <div class="store-price">₱99</div>
+          </div>
+        </article>
+
+        <article class="store-card" style="background-image: url('menu/pizza.jpg');" data-link="product.html?item=Pizza%20Feast" data-image="menu/pizza.jpg" data-price="150">
+          <div class="store-top">
+            <div class="store-name">Pizza Feast</div>
+          </div>
+        </article>
+
+        <article class="store-card" style="background-image: url('menu/sandwich.jpg');" data-link="product.html?item=Sandwich%20Feast" data-image="menu/sandwich.jpg" data-price="70">
+          <div class="store-top">
+            <div class="store-name">Sandwich Feast</div>
+        </article>
+
+        <article class="store-card" style="background-image: url('menu/burgers.jpg');" data-link="product.html?item=Burger%20Feast" data-image="menu/burgers.jpg" data-price="35">
+          <div class="store-top">
+            <div class="store-name">Burger Feast</div>
+          </div>
+        </article>
+
+        <article class="store-card" style="background-image: url('menu/pie.jpg');" data-link="product.html?item=Pie%20Feast" data-image="menu/pie.jpg" data-price="60">
+          <div class="store-top">
+            <div class="store-name">Pie Feast</div>
+            <div class="store-price">₱60</div>
+          </div>
+        </article>
+
+        <article class="store-card" style="background-image: url('menu/fries.jpg');" data-link="product.html?item=French%20Fries" data-image="menu/fries.jpg" data-price="55">
+          <div class="store-top">
+            <div class="store-name">French Fries</div>
+          </div>
+        </article>
+
+        <article class="store-card" style="background-image: url('menu/coffee.jpg');" data-link="product.html?item=Iced%20Coffee" data-image="menu/coffee.jpg" data-price="50">
+          <div class="store-top">
+            <div class="store-name">Iced Coffee</div>
+            <div class="store-price">₱50</div>
+          </div>
+        </article>
+
+        <article class="store-card" style="background-image: url('menu/bubbleTea.jpg');" data-link="product.html?item=Bubble%20Tea" data-image="menu/bubbleTea.jpg" data-price="100">
+          <div class="store-top">
+            <div class="store-name">Bubble Tea</div>
+            <div class="store-price">₱100</div>
+          </div>
+        </article>
+
+        <article class="store-card" style="background-image: url('menu/milkshake.jpg');" data-link="product.html?item=Milkshake%20Drinks" data-image="menu/milkshake.jpg" data-price="69">
+          <div class="store-top">
+            <div class="store-name">Milkshake Drinks </div>
+            <div class="store-price">₱69</div>
+          </div>
+        </article>
+
+        <article class="store-card" style="background-image: url('menu/milkshake.jpg');" data-link="product.html?item=Milkshake" data-image="menu/milkshake.jpg" data-price="69">
+          <div class="store-top">
+            <div class="store-name">Milkshake</div>
+            <div class="store-price">₱69</div>
+          </div>
+        </article>
+
+        <article class="store-card" style="background-image: url('menu/graham.jpg');" data-link="product.html?item=Graham%20Bar" data-image="menu/graham.jpg" data-price="50">
+          <div class="store-top">
+            <div class="store-name">Graham Bar</div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="services" id="about" aria-label="About our services">
+      <div class="services-header">
+        <p class="services-kicker">About</p>
+        <h2 class="services-title">Everything for a perfect treat</h2>
+        <p class="services-subtitle">From sunrise bakes to late-night cravings, each bite is crafted just how you like to indulge.</p>
+      </div>
+      <div class="services-grid">
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">🍕</div>
+          <h3 class="service-title">Tropical escapes</h3>
+          <p class="service-copy">Coconut-glazed buns and pineapple-filled pastries that taste like a sunny getaway.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">🧘‍♂️</div>
+          <h3 class="service-title">Wellness curated</h3>
+          <p class="service-copy">Low-sugar, feel-good treats with wholesome grains and bright citrus notes.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">🍪</div>
+          <h3 class="service-title">Signature experiences</h3>
+          <p class="service-copy">Limited-batch cookies, chef specials, and tasting boxes baked fresh every morning.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">🤝</div>
+          <h3 class="service-title">Concierge care</h3>
+          <p class="service-copy">Custom orders, gift wrapping, and doorstep delivery timed to your schedule.</p>
+        </article>
+      </div>
+    </section>
+
+    <div id="addToast" class="toast" role="status" aria-live="polite" aria-atomic="true">
+      Food added to cart
+    </div>
+
+    <section class="contact" id="contact" aria-label="Contact and recipes">
+      <p class="contact-kicker" style="text-align: center;">Website Inventor</p>
+      <div class="contact-inventor">
+        <img src="inventor/inventorr.jpg" alt="Website Inventor" class="inventor-photo">
+        <div class="inventor-name"></div>
+      </div>
+      <div class="contact-left">
+        <p class="contact-kicker">Contact</p>
+        <h3 class="contact-title">Call or message us to book a session</h3>
+        <a class="contact-phone" href="tel:+639123456789">+63 912 345 6789</a>
+        <p class="contact-note">Book a session with our chefs—hands-on bakes, tips, and take-home guides.</p>      
+      </div> 
+    </section>
+
+    <div id="cartOverlay" class="cart-overlay" hidden></div>
+    <aside id="cartPanel" class="cart-panel" hidden aria-label="Shopping cart">
+      <div class="cart-header">
+        <div class="cart-select-all">
+          <input type="checkbox" id="cartSelectAll" aria-label="Select all items">
+          <label for="cartSelectAll">Select all</label>
+        </div>
+        <h3 class="cart-title">Your cart</h3>
+        <button class="cart-close" type="button" aria-label="Close cart">×</button>
+      </div>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-footer">
+        <div class="cart-total-row">
+          <span>Total</span>
+          <span id="cartTotal">₱0</span>
+        </div>
+        <div class="cart-actions">
+          <button id="cartClear" class="secondary-btn" type="button">Clear</button>
+          <button id="checkoutBtn" class="primary-btn" type="button">Checkout</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+</body>
+</html>
+
